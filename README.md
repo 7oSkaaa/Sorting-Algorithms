@@ -223,7 +223,7 @@ void insertion_sort(int arr[]){
 
 ## Merge Sort
 
-Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one. See the following C implementation for details.
+Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m + 1..r] are sorted and merges the two sorted sub-arrays into one. See the following C implementation for details.
 
 ### Time Complexity
 
@@ -601,17 +601,31 @@ Heap Sort Algorithm for sorting in increasing order:
 ### Pseudocode
 
 ```
-begin CountingSort(A)
-  for i = 0 to k do
-  c[i] = 0
-  for j = 0 to n do
-  c[A[j]] = c[A[j]] + 1
-  for i = 1 to k do
-  c[i] = c[i] + c[i-1]
-  for j = n - 1 downto 0 do
-  B[ c[A[j]]-1 ] = A[j]
-  c[A[j]] = c[A[j]] - 1
-end CountingSort
+begin Heapify(A as array, n as int, i as int)
+    max = i
+    leftchild = 2i + 1
+    rightchild = 2i + 2
+    if (leftchild <= n) and (A[i] < A[leftchild])
+        max = leftchild
+    else 
+        max = i
+    if (rightchild <= n) and (A[max]  > A[rightchild])
+        max = rightchild
+    if (max != i)
+        swap(A[i], A[max])
+        Heapify(A, n, max)
+end Heapify
+
+Heapsort(A as array)
+   n = length(A)
+   for i = n/2 downto 1   
+     Heapify(A, n ,i)
+   
+   for i = n downto 2
+     exchange A[1] with A[i]
+     A.heapsize = A.heapsize - 1
+     Heapify(A, i, 0)
+end Heapsort
 
 ```
 ### Code
