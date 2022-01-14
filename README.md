@@ -503,25 +503,18 @@ Counting sort is a sorting technique based on keys between a specific range. It 
 ### Pseudocode
 
 ```
-begin quickSort(arr[], low, high)
-    if low < high do
-        pi = partition(arr, low, high)
-        quickSort(arr, low, pi - 1) 
-        quickSort(arr, pi + 1, high)
-end quickSort
-```
-```
-begin partition (arr[], low, high)
-    pivot = arr[high] 
-    i = low - 1
-    for j from low to high- 1
-        if arr[j] < pivot
-            i++;    
-            swap arr[i] and arr[j]
-    swap arr[i + 1] and arr[high])
-    return (i + 1)
-}
-end partition
+begin CountingSort(A)
+  for i = 0 to k do
+  c[i] = 0
+  for j = 0 to n do
+  c[A[j]] = c[A[j]] + 1
+  for i = 1 to k do
+  c[i] = c[i] + c[i-1]
+  for j = n - 1 downto 0 do
+  B[ c[A[j]]-1 ] = A[j]
+  c[A[j]] = c[A[j]] - 1
+end CountingSort
+
 ```
 ### Code
 
