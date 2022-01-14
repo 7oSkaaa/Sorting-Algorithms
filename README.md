@@ -581,3 +581,117 @@ static void countSort(int[] arr){
 ```
 
 ---
+
+## Heap Sort
+
+Heap sort is a comparison-based sorting technique based on Binary Heap data structure. It is similar to selection sort where we first find the minimum element and place the minimum element at the beginning. We repeat the same process for the remaining elements.
+Heap Sort Algorithm for sorting in increasing order: 
+1) Build a max heap from the input data. 
+2) At this point, the largest item is stored at the root of the heap. Replace it with the last item of the heap followed by reducing the size of heap by 1. Finally, heapify the root of the tree. 
+3) Repeat step 2 while the size of the heap is greater than 1.
+
+
+
+### Time Complexity
+
+`Best Case` is O(n `x` log(n))
+
+`Worst Case` is O(n `x` log(n))
+
+### Pseudocode
+
+```
+begin CountingSort(A)
+  for i = 0 to k do
+  c[i] = 0
+  for j = 0 to n do
+  c[A[j]] = c[A[j]] + 1
+  for i = 1 to k do
+  c[i] = c[i] + c[i-1]
+  for j = n - 1 downto 0 do
+  B[ c[A[j]]-1 ] = A[j]
+  c[A[j]] = c[A[j]] - 1
+end CountingSort
+
+```
+### Code
+
+#### C++
+
+```C++
+
+void heapify(vector < int >& nums, int i){
+    int largest = i, l = 2 * i + 1, r = 2 * i + 2, n = nums.size();
+    if (l < n && arr[l] > arr[largest]) largest = l;
+    if (r < n && arr[r] > arr[largest]) largest = r;
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(vector < int >& nums){
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    for (int i = n - 1; i > 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+```
+
+#### Python
+
+```Python
+def heapify(data, n, i):
+    largest, left, right = i, 2 * i + 1, 2 * i + 2
+    if left < n and data[i] < data[left]:
+        largest = left
+    if right < n and data[largest] < data[right]:
+        largest = right
+    if largest != i:
+        data[i], data[largest] = data[largest], data[i]
+        heapify(data, n, largest)
+
+def heap_sort(data):
+    n = len(data)
+    for i in range(n - 1, -1, -1):
+        heapify(data, n, i)
+    for i in range(n - 1, 0, -1):
+        data[i], data[0] = data[0], data[i]
+        heapify(data, i, 0)
+```
+
+#### Java
+
+```Java
+
+public void heap_sort(int arr[]){
+   int n = arr.length;
+   for (int i = n / 2 - 1; i >= 0; i--)
+      heapify(arr, n, i);
+   for (int i = n - 1; i > 0; i--) {
+      int temp = arr[0];
+      arr[0] = arr[i];
+      arr[i] = temp;
+      heapify(arr, i, 0);
+   }
+}
+public void heapify(int arr[], int n, int i){
+   int largest = i, l = 2 * i + 1, r = 2 * i + 2;
+   if (l < n && arr[l] > arr[largest])
+      largest = l;
+   if (r < n && arr[r] > arr[largest])
+      largest = r;
+   if (largest != i) {
+      int swap = arr[i];
+      arr[i] = arr[largest];
+      arr[largest] = swap;
+      heapify(arr, n, largest);
+   }
+}
+
+```
+
+---
