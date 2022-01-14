@@ -1,5 +1,37 @@
 # Sorting-Algorithms
 
+This Repo have all information needed to study `Sorting Algorithm` and there is a tracer to see how the algorithm work
+
+You can see how to algorithm run with two way you can use the button of `Generate Nums` to generate array and see how the algorithm work or you can enter your numbers that you want to check them by write them in the `text box` seperated by spaces and use button `Use my Numbers` to use them to see how the algorithms work 
+
+## Requirements
+
+open your terminal
+```
+sudo apt install python3
+```
+```
+sudo apt install python3-tk
+```
+## How to run
+```
+git clone https://github.com/7oSkaaa/Sorting-Algorithms.git
+```
+```
+cd Sorting-Algorithms
+```
+```
+python3 main.py
+```
+
+
+--- 
+
+
+
+**You can read the information about each algorithm from the algorithms and go to the tracer and run it to see how the algorithm work**
+
+
 
 
 ## Bubble Sort
