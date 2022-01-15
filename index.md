@@ -43,9 +43,8 @@ git clone https://github.com/7oSkaaa/Sorting-Algorithms.git
 go to the folder of the repo and just double click on `main.exe`
 
 ## Video:
-<iframe width="420" height="315"
-src="https://vimeo.com/user163596827/review/666280647/d8d39a9847">
-</iframe>
+
+<a href="https://user-images.githubusercontent.com/63050133/149599718-a7e840c9-0fbc-4afe-acd6-88fe84209176.mp4" title="Sorting Algorithm"></a>
 
 --- 
 
