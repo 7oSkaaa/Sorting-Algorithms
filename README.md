@@ -24,6 +24,9 @@ cd Sorting-Algorithms
 python3 main.py
 ```
 
+## Video:
+https://user-images.githubusercontent.com/63050133/149599718-a7e840c9-0fbc-4afe-acd6-88fe84209176.mp4
+
 
 --- 
 
