@@ -102,35 +102,35 @@ UI_frame = Frame(window, width = 900, height = 300, bg = LIGHT_GRAY)
 UI_frame.grid(row = 0, column = 0, padx = 10, pady = 5)
 
 # dropdown to select sorting algorithm 
-l1 = Label(UI_frame, text = "Algorithm: ", bg = LIGHT_GRAY, fg = RED)
+l1 = Label(UI_frame, text = "Algorithm: ", bg = LIGHT_GRAY, fg = RED, font=("Helvetica bold", 12))
 l1.grid(row = 0, column = 0, padx = 10, pady = 5, sticky = W)
 algo_menu = ttk.Combobox(UI_frame, textvariable = algorithm_name, values = algo_list)
 algo_menu.grid(row = 0, column = 1, padx = 5, pady = 5)
 algo_menu.current(0)
 
 # dropdown to select sorting speed 
-l2 = Label(UI_frame, text = "Sorting Speed: ", bg = LIGHT_GRAY, fg = BLUE)
+l2 = Label(UI_frame, text = "Sorting Speed: ", bg = LIGHT_GRAY, fg = BLUE, font=("Helvetica bold", 12))
 l2.grid(row = 1, column = 0, padx = 10, pady = 5, sticky = W)
 speed_menu = ttk.Combobox(UI_frame, textvariable = speed_name, values = speed_list)
 speed_menu.grid(row = 1, column = 1, padx = 5, pady = 5)
 speed_menu.current(0)
 
 # Get the array from the user
-l3 = Label(UI_frame, text = "Enter your Nums: ", bg = LIGHT_GRAY, fg = PURPLE)
+l3 = Label(UI_frame, text = "Enter your Nums: ", bg = LIGHT_GRAY, fg = PURPLE, font=("Helvetica bold", 12))
 l3.grid(row = 2, column = 0, padx = 10, pady = 5, sticky = W)
 inputtxt = Entry(UI_frame, width = 30)  
 inputtxt.grid(row = 2, column = 1, padx = 5, pady = 5)
 
 # button for generating array 
-b2 = Button(UI_frame, text = "Generate Nums", command = generate, bg = YELLOW, fg = WHITE)
+b2 = Button(UI_frame, text = "Generate Nums", command = generate, bg = YELLOW, fg = LIGHT_GRAY, font=("Helvetica bold", 11))
 b2.grid(row = 4, column = 0, padx = 5, pady = 5)
 
 # sort button 
-b1 = Button(UI_frame, text = "Sort", command = sort, bg = YELLOW, fg = WHITE)
+b1 = Button(UI_frame, text = "Sort", command = sort, bg = YELLOW, fg = LIGHT_GRAY, font=("Helvetica bold", 11))
 b1.grid(row = 4, column = 1, padx = 5, pady = 5)
 
 # Enter Button
-b3 = Button(UI_frame, text = "Use your Nums", command = get_input, bg = YELLOW, fg = WHITE)
+b3 = Button(UI_frame, text = "Use your Nums", command = get_input, bg = YELLOW, fg = LIGHT_GRAY, font=("Helvetica bold", 11))
 b3.grid(row = 4, column = 2, padx = 5, pady = 5)
 
 # canvas to draw our array 
