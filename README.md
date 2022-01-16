@@ -6,6 +6,8 @@ You can see how to algorithm run with two way you can use the button of `Generat
 
 ## Requirements
 
+**For Linux Users only**
+
 open your terminal
 ```
 sudo apt install python3
@@ -14,6 +16,9 @@ sudo apt install python3
 sudo apt install python3-tk
 ```
 ## How to run
+
+### Linux
+
 ```
 git clone https://github.com/7oSkaaa/Sorting-Algorithms.git
 ```
@@ -23,6 +28,19 @@ cd Sorting-Algorithms
 ```
 python3 main.py
 ```
+
+### Windows
+
+you can download the repo as `zip` and extract it 
+
+OR 
+
+you can use cmd
+
+```
+git clone https://github.com/7oSkaaa/Sorting-Algorithms.git
+```
+go to the folder of the repo and just double click on `main.exe`
 
 ## Video:
 https://user-images.githubusercontent.com/63050133/149599718-a7e840c9-0fbc-4afe-acd6-88fe84209176.mp4
