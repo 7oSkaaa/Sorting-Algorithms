@@ -242,7 +242,7 @@ To sort an array of size n in ascending order:
 
 ### Time Complexity
 
-`Best Case` is O(n<sup>2</sup>)
+`Best Case` is O(n)
 
 `Worst Case` is O(n<sup>2</sup>)
 
