@@ -652,6 +652,35 @@ void quick_sort(int a[], int start, int end){
 
 ```
 
+#### JavaScript
+
+```JavaScript
+
+const partition = (a, start, end) => {  
+    let pivot = a[end];  
+    let i = (start - 1);  
+    
+    for(let j = start; j < end; j++)  {  
+        if (a[j] < pivot){  
+            i++;  
+            [a[i], a[j]] = [a[j], a[i]];
+        }  
+    }
+    
+    [a[i + 1], a[end]] = [a[end], a[i + 1]];
+    return (i + 1);  
+}  
+    
+const quickSort = (a, start, end) => {  
+    if(start < end) {  
+        let partitionIndex = partition(a, start, end);  
+        quickSort(a, start, partitionIndex - 1);  
+        quickSort(a, partitionIndex + 1, end);  
+    }
+}  
+
+```
+
 ---
 
 ## Counting Sort
