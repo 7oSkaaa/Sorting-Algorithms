@@ -121,6 +121,22 @@ void bubbleSort(int arr[]){
 }
 ```
 
+#### JavaScript
+
+```JavaScript
+const bubbleSort = (arr) => {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] =  [arr[j + 1], arr[j]];
+            }
+        }
+    }
+}
+```
+
 --- 
 
 ## Selection Sort
@@ -195,6 +211,24 @@ void selection_sort(int arr[]){
 }
 
 ```
+#### JavaScript
+
+```JavaScript
+const selectionSort = (arr) => {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++){
+        let min_idx = i;
+
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) min_idx = j;
+        }
+
+        [arr[min_idx], arr[i]] = [arr[i], arr[min_idx]];
+    }
+}
+
+```
 ---
 
 ## Insertion Sort
@@ -265,8 +299,28 @@ void insertion_sort(int arr[]){
         int j = i - 1;
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            j =- 1;
+            j -= 1;
         }
+        arr[j + 1] = key;
+    }
+}
+```
+
+#### JavaScript
+
+```JavaScript
+const insertionSort = (arr) => {
+    const n = arr.length;
+    
+    for (let i = 1; i < n; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j -= 1;
+        }
+        
         arr[j + 1] = key;
     }
 }
@@ -426,6 +480,64 @@ void sort(int arr[], int l, int r){
 }
 ```
 
+#### JavaScript
+
+```JavaScript
+
+const merge = (arr, l, m, r) => {
+    let n1 = m - l + 1;
+    let n2 = r - m;
+    let L = new Array(n1);
+    let R = new Array(n2);
+
+    // Copy left half to L array
+    for(let i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+
+    // Copy right half to R array
+    for(let j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    let i = 0, j = 0;
+    let k = l;
+
+    // Overwrite elements in original array in the right order 
+    while(i < n1 && j < n2) {
+        if(L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy remaining elements in L, if exist
+    while(i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy remaining elements in R, if exist
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+const mergeSort = (arr, l, r) => {
+    if (l < r) {
+        let m = l + Math.floor((r-l) / 2);
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+```
+
 ---
 ## Quick Sort
 
@@ -533,8 +645,37 @@ int partition (int a[], int start, int end)  {
 void quick_sort(int a[], int start, int end){  
     if (start < end)  {  
         int p = partition(a, start, end);  
-        quick(a, start, p - 1);  
-        quick(a, p + 1, end);  
+        quick_sort(a, start, p - 1);  
+        quick_sort(a, p + 1, end);  
+    }
+}  
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const partition = (a, start, end) => {  
+    let pivot = a[end];  
+    let i = (start - 1);  
+    
+    for(let j = start; j < end; j++)  {  
+        if (a[j] < pivot){  
+            i++;  
+            [a[i], a[j]] = [a[j], a[i]];
+        }  
+    }
+    
+    [a[i + 1], a[end]] = [a[end], a[i + 1]];
+    return (i + 1);  
+}  
+    
+const quickSort = (a, start, end) => {  
+    if(start < end) {  
+        let partitionIndex = partition(a, start, end);  
+        quickSort(a, start, partitionIndex - 1);  
+        quickSort(a, partitionIndex + 1, end);  
     }
 }  
 
@@ -629,6 +770,38 @@ static void countSort(int[] arr){
   }
   for (int i = 0; i < arr.length; i++)
     arr[i] = output[i];
+}
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const countSort = (arr) => {
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+
+  const range = max - min + 1;
+  
+  const count = new Array(range);
+  const output = new Array(arr.length);
+
+  for (let i = min; i <= max; i++)
+    count[i] = 0;
+  
+  for (let i = 0; i < arr.length; i++)
+    count[arr[i]] += 1;
+  
+  let j = 0;
+
+  for (let i = min; i <= max; i++) {
+    while (count[i] > 0) {
+        arr[j] = i;
+        j++;
+        count[i]--;
+    }
+  }
 }
 
 ```
@@ -757,6 +930,41 @@ public void heapify(int arr[], int n, int i){
       arr[largest] = swap;
       heapify(arr, n, largest);
    }
+}
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const heapSort = (arr) => {
+    const n = arr.length;
+
+    // Convert array to a heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Iteratively pick the root of the heap and add it to the end of the array
+    for (let i = n - 1; i > 0; i--) {
+        [arr[0], arr[i]] = [arr[i], arr[0]] 
+        heapify(arr, i, 0);
+    }
+}
+
+const heapify = (arr, n, i) => {
+    let largest = i;
+    let l = 2 * i + 1;
+    let r = 2 * i + 2;
+
+    if (l < n && arr[l] > arr[largest]) largest = l;
+
+    if (r < n && arr[r] > arr[largest]) largest = r;
+
+    if (largest != i) {
+        [arr[i], arr[largest]] = [arr[largest], arr[i]];
+        heapify(arr, n, largest);
+    }
 }
 
 ```
