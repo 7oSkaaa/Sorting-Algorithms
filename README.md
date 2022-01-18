@@ -645,8 +645,8 @@ int partition (int a[], int start, int end)  {
 void quick_sort(int a[], int start, int end){  
     if (start < end)  {  
         int p = partition(a, start, end);  
-        quick(a, start, p - 1);  
-        quick(a, p + 1, end);  
+        quick_sort(a, start, p - 1);  
+        quick_sort(a, p + 1, end);  
     }
 }  
 
