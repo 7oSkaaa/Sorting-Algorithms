@@ -716,9 +716,9 @@ end CountingSort
 
 ```C++
 
-void countSort(vector < int >& nums){
-    int max = *max_element(nums.begin(), nums.end());
-    int min = *min_element(nums.begin(), nums.end());
+void countSort(vector < int >& arr){
+    int max = *max_element(arr.begin(), arr.end());
+    int min = *min_element(arr.begin(), arr.end());
     int range = max - min + 1;
     vector < int > count(range), output(arr.size());
     for (int i = 0; i < arr.size(); i++)
