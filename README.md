@@ -102,7 +102,7 @@ def bubble_sort(data):
     size = len(data)
     for i in range(size - 1):
         for j in range(size - i - 1):
-            if data[j] > data[j  +1]:
+            if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
 ```
 
@@ -118,6 +118,22 @@ void bubbleSort(int arr[]){
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
+}
+```
+
+#### JavaScript
+
+```JavaScript
+const bubbleSort = (arr) => {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] =  [arr[j + 1], arr[j]];
+            }
+        }
+    }
 }
 ```
 
@@ -170,7 +186,7 @@ void Selection_Sort(vector < int >& nums){
 #### Python
 
 ```Python
-def selection_sort(data, drawData, timeTick):
+def selection_sort(data):
     for i in range(len(data) - 1):
         Min_Idx = i
         for k in range(i + 1, len(data)):
@@ -195,6 +211,24 @@ void selection_sort(int arr[]){
 }
 
 ```
+#### JavaScript
+
+```JavaScript
+const selectionSort = (arr) => {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++){
+        let min_idx = i;
+
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) min_idx = j;
+        }
+
+        [arr[min_idx], arr[i]] = [arr[i], arr[min_idx]];
+    }
+}
+
+```
 ---
 
 ## Insertion Sort
@@ -208,7 +242,7 @@ To sort an array of size n in ascending order:
 
 ### Time Complexity
 
-`Best Case` is O(n<sup>2</sup>)
+`Best Case` is O(n)
 
 `Worst Case` is O(n<sup>2</sup>)
 
@@ -246,7 +280,7 @@ void Insertion_Sort(vector < int >& nums){
 #### Python
 
 ```Python
-def insertion_sort(data, drawData, timeTick):
+def insertion_sort(data):
     for i in range(len(data)):
         temp = data[i]
         k = i
@@ -265,8 +299,28 @@ void insertion_sort(int arr[]){
         int j = i - 1;
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            j =- 1;
+            j -= 1;
         }
+        arr[j + 1] = key;
+    }
+}
+```
+
+#### JavaScript
+
+```JavaScript
+const insertionSort = (arr) => {
+    const n = arr.length;
+    
+    for (let i = 1; i < n; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j -= 1;
+        }
+        
         arr[j + 1] = key;
     }
 }
@@ -349,7 +403,7 @@ void Merge_Sort(vector < int >& nums, int l, int r){
 #### Python
 
 ```Python
-def merge(data, start, mid, end, drawData, timeTick):
+def merge(data, start, mid, end):
     L = data[start : mid + 1]
     R = data[mid + 1: end + 1]
     L_idx, R_idx, S_idx = 0, 0, start
@@ -426,6 +480,64 @@ void sort(int arr[], int l, int r){
 }
 ```
 
+#### JavaScript
+
+```JavaScript
+
+const merge = (arr, l, m, r) => {
+    let n1 = m - l + 1;
+    let n2 = r - m;
+    let L = new Array(n1);
+    let R = new Array(n2);
+
+    // Copy left half to L array
+    for(let i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+
+    // Copy right half to R array
+    for(let j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    let i = 0, j = 0;
+    let k = l;
+
+    // Overwrite elements in original array in the right order 
+    while(i < n1 && j < n2) {
+        if(L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy remaining elements in L, if exist
+    while(i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy remaining elements in R, if exist
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+const mergeSort = (arr, l, r) => {
+    if (l < r) {
+        let m = l + Math.floor((r-l) / 2);
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+```
+
 ---
 ## Quick Sort
 
@@ -491,7 +603,7 @@ void Quick_Sort(vector < int >& nums, int l, int r){
 #### Python
 
 ```Python
-def partition(data, start, end, drawData, timeTick):
+def partition(data, start, end):
     i = start + 1
     pivot = data[start]
 
@@ -502,11 +614,11 @@ def partition(data, start, end, drawData, timeTick):
     data[start], data[i - 1] = data[i - 1], data[start]
     return i - 1
 
-def quick_sort(data, start, end, drawData, timeTick):
+def quick_sort(data, start, end):
     if start < end:
-        pivot_position = partition(data, start, end, drawData, timeTick)
-        quick_sort(data, start, pivot_position - 1, drawData, timeTick)
-        quick_sort(data, pivot_position + 1, end, drawData, timeTick)
+        pivot_position = partition(data, start, end)
+        quick_sort(data, start, pivot_position - 1)
+        quick_sort(data, pivot_position + 1, end)
 ```
 
 #### Java
@@ -533,8 +645,37 @@ int partition (int a[], int start, int end)  {
 void quick_sort(int a[], int start, int end){  
     if (start < end)  {  
         int p = partition(a, start, end);  
-        quick(a, start, p - 1);  
-        quick(a, p + 1, end);  
+        quick_sort(a, start, p - 1);  
+        quick_sort(a, p + 1, end);  
+    }
+}  
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const partition = (a, start, end) => {  
+    let pivot = a[end];  
+    let i = (start - 1);  
+    
+    for(let j = start; j < end; j++)  {  
+        if (a[j] < pivot){  
+            i++;  
+            [a[i], a[j]] = [a[j], a[i]];
+        }  
+    }
+    
+    [a[i + 1], a[end]] = [a[end], a[i + 1]];
+    return (i + 1);  
+}  
+    
+const quickSort = (a, start, end) => {  
+    if(start < end) {  
+        let partitionIndex = partition(a, start, end);  
+        quickSort(a, start, partitionIndex - 1);  
+        quickSort(a, partitionIndex + 1, end);  
     }
 }  
 
@@ -575,9 +716,9 @@ end CountingSort
 
 ```C++
 
-void countSort(vector < int >& nums){
-    int max = *max_element(nums.begin(), nums.end());
-    int min = *min_element(nums.begin(), nums.end());
+void countSort(vector < int >& arr){
+    int max = *max_element(arr.begin(), arr.end());
+    int min = *min_element(arr.begin(), arr.end());
     int range = max - min + 1;
     vector < int > count(range), output(arr.size());
     for (int i = 0; i < arr.size(); i++)
@@ -597,7 +738,7 @@ void countSort(vector < int >& nums){
 #### Python
 
 ```Python
-def counting_sort(data, drawData, timeTick):
+def counting_sort(data):
     n = max(data) + 1
     count = [0] * n
     for item in data:
@@ -629,6 +770,38 @@ static void countSort(int[] arr){
   }
   for (int i = 0; i < arr.length; i++)
     arr[i] = output[i];
+}
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const countSort = (arr) => {
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+
+  const range = max - min + 1;
+  
+  const count = new Array(range);
+  const output = new Array(arr.length);
+
+  for (let i = min; i <= max; i++)
+    count[i] = 0;
+  
+  for (let i = 0; i < arr.length; i++)
+    count[arr[i]] += 1;
+  
+  let j = 0;
+
+  for (let i = min; i <= max; i++) {
+    while (count[i] > 0) {
+        arr[j] = i;
+        j++;
+        count[i]--;
+    }
+  }
 }
 
 ```
@@ -687,22 +860,23 @@ end Heapsort
 
 ```C++
 
-void heapify(vector < int >& nums, int i){
-    int largest = i, l = 2 * i + 1, r = 2 * i + 2, n = nums.size();
+void heapify(vector < int >& arr, int i){
+    int largest = i, l = 2 * i + 1, r = 2 * i + 2, n = arr.size();
     if (l < n && arr[l] > arr[largest]) largest = l;
     if (r < n && arr[r] > arr[largest]) largest = r;
     if (largest != i) {
         swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        heapify(arr, largest);
     }
 }
 
-void heapSort(vector < int >& nums){
+void heapSort(vector < int >& arr){
+    int n = arr.size();
     for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
+        heapify(arr, i);
     for (int i = n - 1; i > 0; i--) {
         swap(arr[0], arr[i]);
-        heapify(arr, i, 0);
+        heapify(arr, 0);
     }
 }
 
@@ -757,6 +931,41 @@ public void heapify(int arr[], int n, int i){
       arr[largest] = swap;
       heapify(arr, n, largest);
    }
+}
+
+```
+
+#### JavaScript
+
+```JavaScript
+
+const heapSort = (arr) => {
+    const n = arr.length;
+
+    // Convert array to a heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Iteratively pick the root of the heap and add it to the end of the array
+    for (let i = n - 1; i > 0; i--) {
+        [arr[0], arr[i]] = [arr[i], arr[0]] 
+        heapify(arr, i, 0);
+    }
+}
+
+const heapify = (arr, n, i) => {
+    let largest = i;
+    let l = 2 * i + 1;
+    let r = 2 * i + 2;
+
+    if (l < n && arr[l] > arr[largest]) largest = l;
+
+    if (r < n && arr[r] > arr[largest]) largest = r;
+
+    if (largest != i) {
+        [arr[i], arr[largest]] = [arr[largest], arr[i]];
+        heapify(arr, n, largest);
+    }
 }
 
 ```
