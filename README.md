@@ -738,7 +738,7 @@ void countSort(vector < int >& arr){
 #### Python
 
 ```Python
-def counting_sort(data, drawData, timeTick):
+def counting_sort(data):
     n = max(data) + 1
     count = [0] * n
     for item in data:
