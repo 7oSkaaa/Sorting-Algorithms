@@ -186,7 +186,7 @@ void Selection_Sort(vector < int >& nums){
 #### Python
 
 ```Python
-def selection_sort(data, drawData, timeTick):
+def selection_sort(data):
     for i in range(len(data) - 1):
         Min_Idx = i
         for k in range(i + 1, len(data)):
@@ -280,7 +280,7 @@ void Insertion_Sort(vector < int >& nums){
 #### Python
 
 ```Python
-def insertion_sort(data, drawData, timeTick):
+def insertion_sort(data):
     for i in range(len(data)):
         temp = data[i]
         k = i
@@ -403,7 +403,7 @@ void Merge_Sort(vector < int >& nums, int l, int r){
 #### Python
 
 ```Python
-def merge(data, start, mid, end, drawData, timeTick):
+def merge(data, start, mid, end):
     L = data[start : mid + 1]
     R = data[mid + 1: end + 1]
     L_idx, R_idx, S_idx = 0, 0, start
@@ -603,7 +603,7 @@ void Quick_Sort(vector < int >& nums, int l, int r){
 #### Python
 
 ```Python
-def partition(data, start, end, drawData, timeTick):
+def partition(data, start, end):
     i = start + 1
     pivot = data[start]
 
@@ -614,11 +614,11 @@ def partition(data, start, end, drawData, timeTick):
     data[start], data[i - 1] = data[i - 1], data[start]
     return i - 1
 
-def quick_sort(data, start, end, drawData, timeTick):
+def quick_sort(data, start, end):
     if start < end:
-        pivot_position = partition(data, start, end, drawData, timeTick)
-        quick_sort(data, start, pivot_position - 1, drawData, timeTick)
-        quick_sort(data, pivot_position + 1, end, drawData, timeTick)
+        pivot_position = partition(data, start, end)
+        quick_sort(data, start, pivot_position - 1)
+        quick_sort(data, pivot_position + 1, end)
 ```
 
 #### Java
