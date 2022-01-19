@@ -5,13 +5,13 @@ import random
 from Helper.color import *
 
 # Importing algorithms 
-from algorithms.Bubble_Sort import bubble_sort
-from algorithms.Merge_Sort import merge_sort
-from algorithms.Quick_Sort import quick_sort
-from algorithms.Insertion_Sort import insertion_sort
-from algorithms.Counting_Sort import counting_sort
-from algorithms.Selection_Sort import selection_sort
-from algorithms.Heap_Sort import heap_sort
+from Algorithms.Bubble_Sort import bubble_sort
+from Algorithms.Merge_Sort import merge_sort
+from Algorithms.Quick_Sort import quick_sort
+from Algorithms.Insertion_Sort import insertion_sort
+from Algorithms.Counting_Sort import counting_sort
+from Algorithms.Selection_Sort import selection_sort
+from Algorithms.Heap_Sort import heap_sort
 
 
 # Main window 
